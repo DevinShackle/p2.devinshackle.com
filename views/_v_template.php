@@ -7,6 +7,14 @@
     <!-- Common CSS/JSS -->
     <link rel="stylesheet" href="/css/app.css" type="text/css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+
+    <!-- Bootstrap CSS/JS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <!--jQuery Validator-->
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
     <!-- Controller Specific CSS/JS -->
     <?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -16,25 +24,30 @@
 
 <body>  
 
-    <div id='menu'>
+	<div class="navbar">
+	  	<div class="navbar-inner">
+	   	 	<span class="brand"><?=APP_NAME?></span>
+	   	 	<ul class="nav">
+	   	 		<li><a href="/">Home</a></li>
 
-        <a href='/'>Home</a>
+	   	 	<?php if($user): ?>
+	      		<li><a href='/users/logout'>Logout</a></li>
+	      		<li><a href='/users/profile'>Profile</a></li>
+	      		<li><a href='/posts/users'>Users</a></li>
+	      		<li><a href='/posts/index'>My Stream</a></li>
+	      		<li><a href='/posts/add'><b>Post</b></a></li>
+	      	<?php else: ?>
 
-        <!-- Menu for users who are logged in -->
-        <?php if($user): ?>
+	      		<li><a href='/users/signup'>Sign Up</a></li>
+	      		<li><a href='/users/login'>Login</a></li>
 
-            <a href='/users/logout'>Logout</a>
-            <a href='/users/profile'>Profile</a>
+	      	<?php endif; ?>
 
-        <!-- Menu options for users who are not logged in -->
-        <?php else: ?>
+	   		</ul>
+	  	</div>
+	</div>
 
-            <a href='/users/signup'>Sign up</a>
-            <a href='/users/login'>Log in</a>
 
-        <?php endif; ?>
-
-    </div>
 
     <br>
 
