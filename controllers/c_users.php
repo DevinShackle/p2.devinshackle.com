@@ -50,15 +50,6 @@ class users_controller extends base_controller {
         # Render template
         echo $this->template;
 
-        /*
-        #debugging echoes
-        echo '<pre>';
-        print_r($this->user);
-        echo '</pre>';
-        echo '<pre>';
-        print_r($_COOKIE);
-        echo '</pre>';
-        */
 
     }
 
@@ -132,9 +123,35 @@ class users_controller extends base_controller {
 
         # If they weren't redirected away, continue:
 
+        # Find the number of posts the user has made
+        $q = "SELECT post_id
+            FROM posts
+            WHERE user_id = ".$this->user->user_id;
+
+        $numPosts = DB::instance(DB_NAME)->select_rows($q);
+
+        #Find the number of users the user is following
+        $q = "SELECT user_id_followed
+            FROM users_users
+            WHERE user_id = ".$this->user->user_id;
+
+        $numFollowed = DB::instance(DB_NAME)->select_rows($q);
+
+        #Find the number of other users following the user
+        $q = "SELECT user_id
+            FROM users_users
+            WHERE user_id_followed = ".$this->user->user_id;
+
+        $numFollowing = DB::instance(DB_NAME)->select_rows($q);
+
+
         # Setup view
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title   = "Profile of".$this->user->first_name;
+        $this->template->title   = "Profile of ".$this->user->first_name;
+        $this->user->numPosts = sizeof($numPosts);
+        $this->user->numFollowed = sizeof($numFollowed);
+        $this->user->numFollowing = sizeof($numFollowing);
+
 
         # Render template
         echo $this->template;

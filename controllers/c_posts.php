@@ -40,6 +40,65 @@ class posts_controller extends base_controller {
 
     }
 
+    public function edit($post_id) {
+
+        # Search the db for this post_id
+        # Retrieve the post's content
+        $q = "SELECT content 
+            FROM posts 
+            WHERE post_id = ".$post_id;
+
+        $postContent = DB::instance(DB_NAME)->select_field($q);
+
+        # Setup view
+        $this->template->content = View::instance('v_posts_edit');
+        $this->template->title   = "Edit Post";
+        $this->template->content->postContent = $postContent;
+        $this->template->content->post_id = $post_id;
+
+        # Render view
+        echo $this->template;
+
+    }
+
+    public function delete($post_id = NULL) {
+        #Confirm the delete command for post
+
+        # Search the db for this post_id
+        # Retrieve the post's content
+        $q = "SELECT content 
+            FROM posts 
+            WHERE post_id = ".$post_id;
+
+        $toDelete = DB::instance(DB_NAME)->select_field($q);
+        
+        # Setup view
+        $this->template->content = View::instance('v_posts_delete');
+        $this->template->title   = "Delete Post";
+        $this->template->content->toDelete = $toDelete;
+        $this->template->content->post_id = $post_id;
+
+        # Render view
+        echo $this->template;
+
+    }
+
+    public function p_edit($post_id = NULL) {
+
+        DB::instance(DB_NAME)->update("posts", $_POST, "WHERE post_id = ".$post_id);
+
+        Router::redirect('/posts/index');
+    }
+
+    public function p_delete($post_id = NULL) {
+
+        DB::instance(DB_NAME)->delete('posts', "WHERE post_id = ".$post_id);
+
+        Router::redirect('/posts/index');
+
+
+    }
+
     public function index() {
 
         # Set up the View
@@ -48,6 +107,7 @@ class posts_controller extends base_controller {
 
         # Query
         $q = 'SELECT 
+                posts.post_id,
                 posts.content,
                 posts.created,
                 posts.user_id AS post_user_id,
@@ -66,6 +126,7 @@ class posts_controller extends base_controller {
 
         # Pass data to the View
         $this->template->content->posts = $posts;
+        
 
         # Render the View
         echo $this->template;
