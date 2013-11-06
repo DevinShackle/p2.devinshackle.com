@@ -4,11 +4,11 @@
           <fieldset>
             <p>
               <label for="cfname">First Name</label>
-              <input id="cfname" name="fname"type="text" required/>
+              <input id="cfname" name="first_name"type="text" required/>
             </p>
             <p>
               <label for="clname">Last Name</label>
-              <input id="cfname" name="lname"type="text" required/>
+              <input id="cfname" name="last_name"type="text" required/>
             </p>
             <p>
               <label for="cemail">E-Mail</label>
@@ -16,7 +16,8 @@
             </p>
             <p>
               <label for="cpwd">Password</label>
-              <input id="cpwd" name="password" minlength="3" type="text" required></input>
+              <input id="cpwd" type="password" name="password" minlength="3" 
+                  type="text" required></input>
             </p>
             <p>
               <input class="submit" type="submit" value="Sign up"/>
