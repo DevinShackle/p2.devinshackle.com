@@ -7,7 +7,7 @@
 	<div class='span6 offset1'>
 		<h1>Hi, <?=$user->first_name?>!</h1>
 		<h3>This is your user profile</h3>
-		<img class="profilePic" src=<?='/uploads/avatars/'.$user->user_id.'.png'?> 
+		<img class="profilePic" alt="Profile Picture" src=<?='/uploads/avatars/'.$user->user_id.'.png'?> 
 			onError="this.onerror=null;this.src='/uploads/avatars/default.jpg';" />
 	</div>
 </div><!--/row-->

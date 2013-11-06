@@ -6,7 +6,8 @@
 
 		<div class="media">
 			
-			<img class="pull-left" src=<?='/uploads/avatars/'.$post['post_user_id'].'.png'?> 
+			<img class="pull-left" alt="Profile Picture" 
+				src=<?='/uploads/avatars/'.$post['post_user_id'].'.png'?> 
 				onError="this.onerror=null;this.src='/uploads/avatars/default.jpg';" />
 
 			<div class="media-body">

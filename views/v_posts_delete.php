@@ -2,10 +2,10 @@
 	<div class="well span4 offset1">
 		<form method='POST' action=<?='/posts/p_delete/'.$post_id?>>
 
-		    <label for='content'>Delete post?</label>
-		    <label for='content' id='deleteWarning'>This can NOT be undone</label>
-		    <br><br>
-		    <input type='submit' value='Delete Post'>
+			<label>Delete post?</label>
+			<label id='deleteWarning'>This can NOT be undone</label>
+			<br><br>
+			<input type='submit' value='Delete Post'>
 
 		</form> 
 	</div>

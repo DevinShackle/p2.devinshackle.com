@@ -4,7 +4,8 @@
 
 		<div class="span3 offset2 well">
 
-			<img class="pull-right" src=<?='/uploads/avatars/'.$user["user_id"].'.png'?> 
+			<img class="pull-right" alt="Profile Picture" 
+				src=<?='/uploads/avatars/'.$user["user_id"].'.png'?> 
 				onError="this.onerror=null;this.src='/uploads/avatars/default.jpg';" />
 
 			<!-- Print this user's name -->

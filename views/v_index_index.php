@@ -8,7 +8,7 @@
 		<a class="btn btn-primary btn-large" href="/posts/add">Get to postin'</a>
 	</p>
 <?php else: ?>
-	<p><?=APP_NAME?> is a great way to let other users know what you are thinking.</a>
+	<p><?=APP_NAME?> is a great way to let other users know what you are thinking.</p>
 	<p>
 		<a class="btn btn-primary btn-large" href="/users/login">Login</a>
 		<small>or <a href="/users/signup">sign up for an account</a></small>
